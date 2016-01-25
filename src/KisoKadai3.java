@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Scanner;
 
 /**
@@ -24,8 +25,21 @@ public class KisoKadai3 {
 		while (end){
 
 			System.out.println("[メニュー] １：新規作成  ２：ファイル読み込み  ３：ファイル書き込み 4:終了 \n");
-			int menu =new java.util.Scanner(System.in).nextInt();
-			switch (menu) {
+
+			 int menu;
+	            System.out.print("メニュー番号をを入力して下さい: \n");
+	            InputStreamReader isr = new InputStreamReader(System.in);
+	            BufferedReader br = new BufferedReader(isr);
+	            try{
+	                    String buf = br.readLine();
+	                    menu = Integer.parseInt(buf);
+	            }catch(Exception e){
+	            	    menu=0;
+	            	    System.out.println("数字を入力して下さい。");
+	            }
+
+
+	            switch (menu) {
 				case 1:
 					Create();
 					break;
@@ -44,8 +58,6 @@ public class KisoKadai3 {
 			}
 		}
 	}
-
-
 		public static void Create() {
 			System.out.println("ファイルを作成します");
 			System.out.println("ファイル名をどうぞ");
@@ -61,6 +73,7 @@ public class KisoKadai3 {
 				}
 			}catch(IOException e){
 				System.out.println(e);
+				
 			}
 		}
 
