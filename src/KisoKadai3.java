@@ -20,43 +20,51 @@ public class KisoKadai3 {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		boolean end = true ;
+		while (end){
 
-			System.out.println("[メニュー] １：新規作成  ２：ファイル読み込み  ３：ファイル書き込み  \n");
+			System.out.println("[メニュー] １：新規作成  ２：ファイル読み込み  ３：ファイル書き込み 4:終了 \n");
 			int menu =new java.util.Scanner(System.in).nextInt();
-	          switch (menu) {
-			case 1:
-				newfile1 ();
-				break;
-			case 2:
-			   yomu();
-			    break;
-			case 3:
-				   kaku();
-				    break;
+			switch (menu) {
+				case 1:
+					Create();
+					break;
+				case 2:
+					Read();
+					break;
+				case 3:
+					write();
+					break;
+				case 4 :
+					fin();
+					end = false;
+					break;
 			default:
 				break;
 			}
 		}
+	}
 
-		public static void newfile1() {
-			 System.out.println("ファイル作ります");
-			 System.out.println("ファイル名を書いてください");
+
+		public static void Create() {
+			System.out.println("ファイルを作成します");
+			System.out.println("ファイル名をどうぞ");
 			String namefile =new java.util.Scanner(System.in).nextLine();
 			String fileplase ="C:\\users\\internous\\";
-			    File newfile = new File( fileplase + namefile);
+			File newfile = new File( fileplase + namefile);
 
-			    try{
-			      if (newfile.createNewFile()){
-			        System.out.println("ファイルOK");
-			      }else{
-			        System.out.println("作成失敗");
-			      }
-			    }catch(IOException e){
-			      System.out.println(e);
-			    }
-			  }
+			try{
+				if (newfile.createNewFile()){
+					System.out.println("ファイルの作成に成功しました");
+				}else{
+			        System.out.println("ファイルの作成に失敗しました");
+				}
+			}catch(IOException e){
+				System.out.println(e);
+			}
+		}
 
-		 public static void yomu(){
+		 public static void Read(){
 			 System.out.println("どのファイルを読みますか？");
 		    	String namefile =new java.util.Scanner(System.in).nextLine();
 		    	String plase = "C:\\users\\internous\\";
@@ -93,9 +101,9 @@ public class KisoKadai3 {
 		    		    return false;
 		    		  }
 
-		      public static void kaku(){
-		    	 System.out.println("ファイルに書き込みをします");
-		     	 System.out.println("書き込みたいファイル名を書いてください");
+		      public static void write(){
+		    	  System.out.println("ファイルに書き込みをします");
+		     	 System.out.println("書き込みたいファイル名をどうぞ！");
 		     	 String namefile =new Scanner(System.in).nextLine();
 		     	 String plase = "C:\\users\\internous\\";
 		     	 try{
@@ -119,6 +127,14 @@ public class KisoKadai3 {
 		     	    }
 		     	  }
 
+		      public static void fin(){
+		    	  System.out.println("システムを終了します。お疲れ様でした。");
+		    	  			System.exit(0); }
+
+
+
+
+
 		     	  private static boolean checkBeforeWritefile(File file){
 		     	    if (file.exists()){
 		     	      if (file.isFile() && file.canWrite()){
@@ -129,5 +145,4 @@ public class KisoKadai3 {
 		     	    return false;
 		     	  }
 		     }
-
 

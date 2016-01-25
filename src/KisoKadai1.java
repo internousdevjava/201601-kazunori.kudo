@@ -10,11 +10,11 @@ public class KisoKadai1 {
 
 	    for (int i=1 ; i<=name ; i++ ){
 		for(int j=1; j<= nam ;j++ ){
-			System.out.print(i * j);
 			System.out.print(" ");
-        }
+			System.out.print( i + "×" + j + "=" +  i * j);
+		}
 		System.out.println("");
-
+		;
 	 }
 	}
 	}
